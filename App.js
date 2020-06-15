@@ -1,47 +1,51 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={estilos.container}>
-      <View style={estilos.v1}>
-        <Text style={estilos.text}>vista 1</Text>
+export default function App(){
+  return(
+    <View style={styles.container}>
+      <View style={styles.v1}>
+        <Text>Vista 1</Text>
       </View>
-      <View style={estilos.v2}>
-        <Text style={estilos.text}>vista 2</Text>
+      <View style={styles.v2}>
+        <Text>Vista 2</Text>
+        <Text>Vista 2</Text>
+        <Text>Vista 2</Text>
       </View>
-      <View style={estilos.v3}>
-        <Text style={estilos.text}>vista 3</Text>
+      <View style={styles.v3}>
+        <Text>Vista 3</Text>
       </View>
     </View>
   );
 }
 
-const estilos = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
     flexDirection: 'column'
   },
-  text: {
+  text:{
     color: 'black'
   },
   v1: {
-    flex: 1,
-    backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'yellow',
+        justifyContent: 'center',
+        alignItems: 'center'
   },
   v2: {
-    flex: 1,
-    backgroundColor: 'blue',
-    alignItems: 'center',
-    justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'blue',
+        justifyContent: 'center',
+        alignItems: 'center'
   },
   v3: {
-    flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
+        flex: 1,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center'
   }
-});
+
+
+
+})
