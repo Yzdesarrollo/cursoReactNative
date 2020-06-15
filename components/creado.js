@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function Componente1(){
+export default function Creado(props){
+    const {text, num} = props;
     return(
         <View>
-            <Text>Componente creado</Text>
+            <Text>Componente creado {text}{num}</Text>
         </View>
     );
 }

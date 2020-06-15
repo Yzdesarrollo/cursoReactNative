@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, TextInput, Button, Alert  } from 'react-native';
-import Componente1 from './components/creado';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import Creado from './components/creado';
 
-const App = () =>{
-  const saludo = () => {Alert.alert('Hola Mundo')};
-  const [nombre, setNombre] = useState();
+export default function App(){
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=>{
+    console.log('Ejecutando useEffect');
+    console.log('Loading es ', loading);
+  },[loading]);
+
   return(
     <View style={styles.container}>
-      <Text>{nombre}</Text>
-      <Image style={styles.imagen} source={require('./assets/splash.png')} />
-      <Componente1 />
-      <TextInput style={styles.input} placeholder={'Usuario'} onChangeText={(texto)=> setNombre(texto)}/>
-      <Button title={'Start'} onPress={saludo}/>
+      <Text>UseEffect</Text>
+      {loading === true && <Creado />}
+      <Button  title={'Actualizar estado'} onPress={() => setLoading(true)} />
+      <Creado text='Props' num={2}/>
     </View>
   );
 }
@@ -19,22 +23,7 @@ const App = () =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  imagen: {
-    width: 300,
-    height: 300
-  },
-  input: {
-    borderColor: 'blue',
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    width: 300,
-    textAlign: 'center'
   }
 })
-
-export default App;
