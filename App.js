@@ -5,12 +5,20 @@ export default function App(){
   return(
     <View style={styles.container}>
       <View style={styles.v1}>
-        <View style={styles.v2}></View>
-        <View style={styles.v3}></View>
+        <View style={styles.v2}>
+          <Text>Color1</Text>
+        </View>
+        <View style={styles.v3}>
+          <Text>Color2</Text>
+        </View>
       </View>
       <View style={styles.v4}>
-        <View style={styles.v5}></View>
-        <View style={styles.v6}></View>
+        <View style={styles.v5}>
+          <Text>Color3</Text>
+        </View>
+        <View style={styles.v6}>
+          <Text>Color4</Text>
+        </View>
       </View>
     </View>
   );
@@ -22,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   text:{
-    color: 'black'
+    color: 'yellow'
   },
   v1: {
         flex: 1,
@@ -56,7 +64,5 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center'
   },
-
-
 
 })
