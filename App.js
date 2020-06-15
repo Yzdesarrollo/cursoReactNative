@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Button, Alert  } from 'react-native';
+import Componente1 from './components/creado';
 
 const App = () =>{
   const saludo = () => {Alert.alert('Hola Mundo')};
@@ -8,7 +9,8 @@ const App = () =>{
     <View style={styles.container}>
       <Text>{nombre}</Text>
       <Image style={styles.imagen} source={require('./assets/splash.png')} />
-      <TextInput style={styles.input} placeholder={'Usuario'} onChangeText={(text)=> setNombre(text)}/>
+      <Componente1 />
+      <TextInput style={styles.input} placeholder={'Usuario'} onChangeText={(texto)=> setNombre(texto)}/>
       <Button title={'Start'} onPress={saludo}/>
     </View>
   );
