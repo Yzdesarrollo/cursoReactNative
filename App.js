@@ -1,12 +1,15 @@
-import React  from 'react';
-import { StyleSheet, View, Text, Image, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, TextInput, Button, Alert  } from 'react-native';
 
 const App = () =>{
+  const saludo = () => {Alert.alert('Hola Mundo')};
+  const [nombre, setNombre] = useState();
   return(
     <View style={styles.container}>
-      <Text>Hola</Text>
+      <Text>{nombre}</Text>
       <Image style={styles.imagen} source={require('./assets/splash.png')} />
-      <TextInput style={styles.input} placeholder={'Usuario'}/>
+      <TextInput style={styles.input} placeholder={'Usuario'} onChangeText={(text)=> setNombre(text)}/>
+      <Button title={'Start'} onPress={saludo}/>
     </View>
   );
 }
