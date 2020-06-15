@@ -1,25 +1,12 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React  from 'react';
+import { StyleSheet, View, Text, Image, TextInput } from 'react-native';
 
-export default function App(){
+const App = () =>{
   return(
     <View style={styles.container}>
-      <View style={styles.v1}>
-        <View style={styles.v2}>
-          <Text>Color1</Text>
-        </View>
-        <View style={styles.v3}>
-          <Text>Color2</Text>
-        </View>
-      </View>
-      <View style={styles.v4}>
-        <View style={styles.v5}>
-          <Text>Color3</Text>
-        </View>
-        <View style={styles.v6}>
-          <Text>Color4</Text>
-        </View>
-      </View>
+      <Text>Hola</Text>
+      <Image style={styles.imagen} source={require('./assets/splash.png')} />
+      <TextInput style={styles.input} placeholder={'Usuario'}/>
     </View>
   );
 }
@@ -27,42 +14,22 @@ export default function App(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column'
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  text:{
-    color: 'yellow'
+  imagen: {
+    width: 300,
+    height: 300
   },
-  v1: {
-        flex: 1,
-        flexDirection: 'row'
-  },
-  v2: {
-        flex: 1,
-        backgroundColor: 'pink',
-        justifyContent: 'center',
-        alignItems: 'center'
-  },
-  v3: {
-        flex: 1,
-        backgroundColor: 'blue',
-        justifyContent: 'center',
-        alignItems: 'center'
-  },
-    v4: {
-      flex: 1,
-      flexDirection:'row'
-  },
-  v5: {
-      flex: 1,
-      backgroundColor: 'green',
-      justifyContent: 'center',
-      alignItems: 'center'
-  },
-    v6: {
-      flex: 1,
-      backgroundColor: 'purple',
-      justifyContent: 'center',
-      alignItems: 'center'
-  },
-
+  input: {
+    borderColor: 'blue',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    width: 300,
+    textAlign: 'center'
+  }
 })
+
+export default App;
