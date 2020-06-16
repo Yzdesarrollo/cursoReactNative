@@ -20,10 +20,12 @@ const Stack = createStackNavigator();
 function App(){
   return(
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Pantalla 1' component={Home} />
-        <Stack.Screen name='Pantalla 2' component={Details} />
-        <Stack.Screen name='Pantalla 3' component={Login} />
+      <Stack.Navigator screenOptions={
+        {headerStyle:{backgroundColor:'#FFA000'}, headerTintColor: '#fff'}
+      }>
+        <Stack.Screen name='Pantalla 1' component={Home} options={{title:'Inicio'}}/>
+        <Stack.Screen name='Pantalla 2' component={Details} options={{title:'Detalle'}} />
+        <Stack.Screen name='Pantalla 3' component={Login} options={{title:'Ingreso'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
