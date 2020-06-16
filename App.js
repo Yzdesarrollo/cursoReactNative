@@ -1,33 +1,42 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
+
+export default function App(){
+  const [tareas, setTareas] = React.useState('');
+  const [fecha, setFecha] = React.useState('');
+  const createTarea = async ()=>{
+      try {
+        const response = fetch('http://192.168.0.14:puerto/',{
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            task: tareas,
+            date: fecha
+          })
+        });
+        const json = await response.json();
+        Alert.alert('Tarea creada');
+      } catch (error) {
+        console.log(error);
+      }
+  }
+  return(
+    <View style={styles.container}>
+      <TextInput placeholder='Enter Task' onChangeText={text => setTareas(text)}/>
+      <TextInput placeholder='Enter Date'onChangeText={text => setFecha(text)}/>
+      <Button title='Create Task' onPress={createTarea}/>
     </View>
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
