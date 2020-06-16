@@ -1,22 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import Creado from './components/creado';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App(){
-  const [loading, setLoading] = useState(false);
-
-  useEffect(()=>{
-    console.log('Ejecutando useEffect');
-    console.log('Loading es ', loading);
-  },[loading]);
-
+function Home({ navigation }){
   return(
     <View style={styles.container}>
-      <Text>UseEffect</Text>
-      {loading === true && <Creado />}
-      <Button  title={'Actualizar estado'} onPress={() => setLoading(true)} />
-      <Creado text='Props' num={2}/>
+      <Text>React Navigation</Text>
+      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla2')  }/>
     </View>
+  );
+}
+
+function Details(){
+  return(
+    <View style={styles.container}>
+      <Text>React Navigation</Text>
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Pantalla1' component={Home} />
+        <Stack.Screen name='Pantalla2' component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -24,6 +37,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fff'
   }
-})
+}) 
+
+export default App;
