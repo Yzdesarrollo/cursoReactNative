@@ -9,7 +9,7 @@ function Home({ navigation }){
   return(
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla 2')  }/>
+      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla 2',{name: 'Rocky', data: 4})  }/>
     </View>
   );
 }
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff'
-  }
+  },
+  
 }) 
 
 export default App;
