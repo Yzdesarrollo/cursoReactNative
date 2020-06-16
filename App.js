@@ -6,10 +6,11 @@ import Details from './screens/Details';
 import Login from './screens/Login';
 
 function Home({ navigation }){
+  let data = { name: 'Rocky', data: 4 }
   return(
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla 2',{name: 'Rocky', data: 4})  }/>
+      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla 2',data)}/>
     </View>
   );
 }
