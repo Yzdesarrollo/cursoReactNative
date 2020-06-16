@@ -1,44 +1,33 @@
-import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import * as React from 'react';
+import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Details from './screens/Details';
-import Login from './screens/Login';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-function Home({ navigation }){
-  let data = { name: 'Rocky', data: 4 }
-  return(
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button title='ir a Details' onPress={() => navigation.navigate('Pantalla 2',data)}/>
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
     </View>
   );
 }
 
-const Stack = createStackNavigator();
-
-function App(){
-  return(
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={
-        {headerStyle:{backgroundColor:'#FFA000'}, headerTintColor: '#fff'}
-      }>
-        <Stack.Screen name='Pantalla 1' component={Home} options={{title:'Inicio'}}/>
-        <Stack.Screen name='Pantalla 2' component={Details} options={{title:'Detalle'}} />
-        <Stack.Screen name='Pantalla 3' component={Login} options={{title:'Ingreso'}} />
-      </Stack.Navigator>
-    </NavigationContainer>
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff'
-  },
-  
-}) 
+const Tab = createBottomTabNavigator();
 
-export default App;
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
