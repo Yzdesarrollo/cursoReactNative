@@ -1,35 +1,20 @@
-import * as React from 'react';
-import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ListTasks from './screens/list-task/list-tasks';
+import CreateTasks from './screens/create-task/create-tasks';
 
+const Stack = createStackNavigator();
 
 export default function App(){
-  const [tareas, setTareas] = React.useState('');
-  const [fecha, setFecha] = React.useState('');
-  const createTarea = async ()=>{
-      try {
-        const response = fetch('http://192.168.0.14:puerto/',{
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify({
-            task: tareas,
-            date: fecha
-          })
-        });
-        const json = await response.json();
-        Alert.alert('Tarea creada');
-      } catch (error) {
-        console.log(error);
-      }
-  }
   return(
-    <View style={styles.container}>
-      <TextInput placeholder='Enter Task' onChangeText={text => setTareas(text)}/>
-      <TextInput placeholder='Enter Date'onChangeText={text => setFecha(text)}/>
-      <Button title='Create Task' onPress={createTarea}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='list' component={ListTasks} options={{title:'Listar Tareas'}}/>
+        <Stack.Screen name='create' component={CreateTasks} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
